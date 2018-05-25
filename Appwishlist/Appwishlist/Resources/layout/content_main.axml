@@ -5,12 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main">
-
+    tools:showIn="@layout/activity_main"
+    android:id="@+id/relativeLayout1">
     <TextView
-        android:layout_width="wrap_content"
+        android:text="Enter a Phoneword:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Hello World!" />
-
+        android:id="@+id/textView1" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView1"
+        android:id="@+id/PhoneNumberText"
+        android:text="1-855-XAMARIN" />
+    <Button
+        android:text="Translate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/PhoneNumberText"
+        android:id="@+id/TranslateButton" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TranslateButton"
+        android:id="@+id/TranslatedPhoneWord" />
+    <Button
+        android:text="@string/translationHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TranslatedPhoneWord"
+        android:enabled="false"
+        android:id="@+id/TranslationHistoryButton" />
 </RelativeLayout>
