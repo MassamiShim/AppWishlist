@@ -3286,9 +3286,6 @@ namespace Appwishlist
 			// aapt resource value: 0x7f09001f
 			public const int bottom_sheet_behavior = 2131296287;
 			
-			// aapt resource value: 0x7f09002a
-			public const int capeta = 2131296298;
-			
 			// aapt resource value: 0x7f090020
 			public const int character_counter_pattern = 2131296288;
 			
