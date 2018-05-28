@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
+using Android.Service.Autofill;
 
 namespace Appwishlist
 {
@@ -47,12 +48,21 @@ namespace Appwishlist
 
                 //Chamando API passando o arquivo JSON
                 //HttpResponseMessage response = client.GetAsync("http://reddit.com").Result;
+                //HttpResponseMessage response = client.GetAsync("http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=440&count=3&maxlength=300&format=json").Result;
                 HttpResponseMessage response = client.GetAsync("http://api.steampowered.com/ISteamUserStats/GetGlobalStatsForGame/v0001/?format=json&appid=17740&count=1&name%5B0%5D=global.map.emp_isle").Result;
 
                 //Passando retorno da API para uma string
                 retorno = response.Content.ReadAsStringAsync().Result;
-                dynamic resultado = (JObject)JsonConvert.DeserializeObject(retorno);
-                dynamic data = JObject.Parse(retorno);
+                dynamic resultado = JsonConvert.DeserializeObject(retorno);
+
+                //dynamic lol = resultado["appnews"]["newsitems"][0]["contents"];
+                dynamic lol = resultado["response"]["globalstats"]["global.map.emp_isle"]["total"];
+                teste[0] = lol;
+
+                //foreach (var obj in resultado)
+                //{
+                //    teste[0] = obj;
+                //}
 
                 //Fragmentando retorno do arquivo json 
                 //dynamic resultado = JsonConvert.DeserializeObject(retorno);
