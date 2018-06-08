@@ -10,7 +10,7 @@ using Android.Content;
 
 namespace Appwishlist
 {
-    [Activity(Label = "MainWishlist", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    [Activity(Label = "MainWishlist", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class MainWishlist : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

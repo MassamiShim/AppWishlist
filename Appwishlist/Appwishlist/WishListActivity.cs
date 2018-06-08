@@ -49,7 +49,8 @@ namespace Appwishlist
                 //Chamando API passando o arquivo JSON
                 //HttpResponseMessage response = client.GetAsync("http://reddit.com").Result;
                 //HttpResponseMessage response = client.GetAsync("http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=440&count=3&maxlength=300&format=json").Result;
-                HttpResponseMessage response = client.GetAsync("http://api.steampowered.com/ISteamUserStats/GetGlobalStatsForGame/v0001/?format=json&appid=17740&count=1&name%5B0%5D=global.map.emp_isle").Result;
+                //HttpResponseMessage response = client.GetAsync("http://api.steampowered.com/ISteamUserStats/GetGlobalStatsForGame/v0001/?format=json&appid=17740&count=1&name%5B0%5D=global.map.emp_isle").Result;
+                HttpResponseMessage response = client.GetAsync("https://store.steampowered.com/api/appdetails?appids=10").Result;
 
                 //Passando retorno da API para uma string
                 retorno = response.Content.ReadAsStringAsync().Result;
