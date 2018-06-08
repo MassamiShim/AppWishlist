@@ -1,20 +1,22 @@
 ﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Net.Http;
+using Android.Graphics;
+using System.Net;
 
 namespace Appwishlist
 {
     public class DataService
     {
-        public static  Task<dynamic> getDataFromService(string queryString)
+        public static async Task<dynamic> getDataFromService(string queryString)
         {
             HttpClient client = new HttpClient();
             //Limpando header
             client.DefaultRequestHeaders.Accept.Clear();
             //Adicionando um novo header do tipo JSON
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.GetAsync(queryString).Result;
-            //var response = await client.GetAsync(queryString);
+            //HttpResponseMessage response = client.GetAsync(queryString).Result;
+            var response = await client.GetAsync(queryString);
 
             dynamic data = null;
             if (response != null)
@@ -25,6 +27,22 @@ namespace Appwishlist
             }
 
             return data;
+        }
+
+        public static Bitmap GetImageBitmapFromUrl(string url)
+        {
+            Bitmap imageBitmap = null;
+
+            using (var webClient = new WebClient())
+            {
+                var imageBytes = webClient.DownloadData(url);
+                if (imageBytes != null && imageBytes.Length > 0)
+                {
+                    imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                }
+            }
+
+            return imageBitmap;
         }
     }
 }

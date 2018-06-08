@@ -10,7 +10,7 @@ using Android.Content;
 
 namespace Appwishlist
 {
-    [Activity(Label = "MainWishlist", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "MainWishlist", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainWishlist : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -24,7 +24,7 @@ namespace Appwishlist
 
             listGame.Click += (sender, e) =>
             {
-                var intent = new Intent(this, typeof(WishListActivity));
+                var intent = new Intent(this, typeof(GameActivity));
                 //intent.PutStringArrayListExtra("phone_numbers", phoneNumbers);
                 StartActivity(intent);
             };

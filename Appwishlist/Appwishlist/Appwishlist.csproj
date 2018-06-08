@@ -65,7 +65,7 @@
     <Compile Include="Core.cs" />
     <Compile Include="Dataservice.cs" />
     <Compile Include="Weather.cs" />
-    <Compile Include="WeatherActivity.cs" />
+    <Compile Include="GameActivity.cs" />
     <Compile Include="WishListActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainWishlist.cs" />

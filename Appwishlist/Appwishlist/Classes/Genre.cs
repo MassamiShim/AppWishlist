@@ -16,5 +16,12 @@ namespace Appwishlist.Classes
     {
         public string id { get; set; }
         public string description { get; set; }
+
+        public Genre(string id, string description)
+        {
+            this.id = id;
+            this.description = description;
+        }
+
     }
 }

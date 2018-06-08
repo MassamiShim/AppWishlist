@@ -40,23 +40,51 @@ namespace Appwishlist
         public static async Task<Game> GetGame(string idGame)
         {
             string queryString = "https://store.steampowered.com/api/appdetails?appids=" + idGame;
+
+            //string key = "e47a8916649e524715bcfe315ecb4afa";
+            //queryString = "http://api.openweathermap.org/data/2.5/weather?zip="
+            //    + idGame + ",us&appid=" + key + "&units=imperial";
+            //http://api.openweathermap.org/data/2.5/weather?zip=60610,us&appid=e47a8916649e524715bcfe315ecb4afa&units=imperial
+
             dynamic results = await DataService.getDataFromService(queryString).ConfigureAwait(false);
 
-            if ((string)results[0]["sucess"] == "true")
+            //if (results[idGame]["data"]["metacritic"] != null) { 
+            //    Console.WriteLine("SUP!");
+            //}
+
+            if ((string)results[idGame]["success"] == "True")
             {
-                Game game = new Game();
-                game.Name = (string)results[0]["data"]["name"];
-                game.Steam_appid = (string)results[0]["data"]["steam_appid"];
-                game.Detailed_description = (string)results[0]["data"]["detailed_description"];
-                game.Header_image = (string)results[0]["data"]["header_image"];
-                game.Currency = (string)results[0]["data"]["price_overview"]["currency"];
-                game.Initial = (string)results[0]["data"]["price_overview"]["initial"];
-                game.Score = (string)results[0]["data"]["metacritic"]["score"];
-                game.Categories_description = (string)results[0]["data"]["categories"][0]["description"];
-                game.Genres = results[0]["data"]["genres"];
+                if ((string)results[idGame]["data"]["type"] == "Game")
+                {
 
+                    Game game = new Game();
+                    game.Name = (string)results[idGame]["data"]["name"];
+                    game.Steam_appid = (string)results[idGame]["data"]["steam_appid"];
+                    game.Detailed_description = (string)results[idGame]["data"]["detailed_description"];
+                    game.Header_image = (string)results[idGame]["data"]["header_image"];
+                    game.Currency = (string)results[idGame]["data"]["price_overview"]["currency"];
+                    game.Initial = (string)results[idGame]["data"]["price_overview"]["initial"];
+                    //Exists cases where the value does not exists
+                    if (results[idGame]["data"]["metacritic"] != null)
+                    {
+                        game.Score = (string)results[idGame]["data"]["metacritic"]["score"];
+                    }
+                    else
+                    {
+                        game.Score = "N/A";
+                    }
+                    game.Categories_description = (string)results[idGame]["data"]["categories"][0]["description"];
+                    //game.Genres = results[idGame]["data"]["genres"];
 
-                return game;
+                    var teste = results[idGame]["data"]["genres"][0];
+                    Genre genre = new Genre((string)teste["id"], (string)teste["description"]);
+
+                    return game;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
                 return null;
