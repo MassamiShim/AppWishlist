@@ -53,7 +53,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/locationLabel"
+            android:id="@+id/nameLabel"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp" />
         <TextView
@@ -68,7 +68,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tempLabel"
+            android:id="@+id/idLabel"
             android:layout_marginLeft="10dp" />
         <TextView
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -82,7 +82,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/windLabel"
+            android:id="@+id/descriptionLabel"
             android:layout_marginLeft="10dp" />
         <TextView
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -92,25 +92,11 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp" />
         <TextView
-            android:text="Image"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/humidtyLabel"
-            android:layout_marginLeft="10dp" />
-        <TextView
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageText"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp" />
-        <TextView
             android:text="Currency"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/visibilityLabel"
+            android:id="@+id/currencyLabel"
             android:layout_marginLeft="10dp" />
         <TextView
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -124,7 +110,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/sunriseLabel"
+            android:id="@+id/priceLabel"
             android:layout_marginLeft="10dp" />
         <TextView
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -138,7 +124,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/sunsetLabel"
+            android:id="@+id/scoreLabel"
             android:layout_marginLeft="10dp" />
         <TextView
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -147,6 +133,17 @@
             android:id="@+id/scoreText"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp" />
+        <TextView
+            android:text="Categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoriesLabel"
+            android:layout_marginLeft="10dp" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoriesText" />
         <ImageView
             android:src="@android:drawable/ic_menu_gallery"
             android:layout_width="match_parent"

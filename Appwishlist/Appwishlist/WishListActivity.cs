@@ -20,6 +20,7 @@ namespace Appwishlist
     [Activity(Label = "WishlistActivity")]
     public class WishListActivity : ListActivity
     {
+        /*TEST
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -70,6 +71,31 @@ namespace Appwishlist
             }
             teste[1] = retorno;
             this.ListAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, teste);
+        }
+        */
+        string[] items;
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            //SetContentView(Resource.Layout.wishlist_main);
+
+            items = new string[] {"TESTE 0", "TESTE 1", "TESTE 2" };
+
+            //ListView list = FindViewById<ListView>(Resource.Id.list);
+            this.ListAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, items);
+        }
+
+        protected override void OnListItemClick(ListView l, View v, int position, long id)
+        {
+            var t = items[position];
+            //Android.Widget.Toast.MakeText(this, t, Android.Widget.ToastLength.Short).Show();
+
+            var intent = new Intent(this, typeof(GameActivity));
+            //intent.PutStringArrayListExtra("phone_numbers", phoneNumbers);
+            intent.PutExtra("gameId", position*10);
+            StartActivity(intent);
         }
     }
 }

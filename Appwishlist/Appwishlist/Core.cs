@@ -54,7 +54,7 @@ namespace Appwishlist
 
             if ((string)results[idGame]["success"] == "True")
             {
-                if ((string)results[idGame]["data"]["type"] == "Game")
+                if ((string)results[idGame]["data"]["type"] == "game")
                 {
 
                     Game game = new Game();
@@ -64,7 +64,7 @@ namespace Appwishlist
                     game.Header_image = (string)results[idGame]["data"]["header_image"];
                     game.Currency = (string)results[idGame]["data"]["price_overview"]["currency"];
                     game.Initial = (string)results[idGame]["data"]["price_overview"]["initial"];
-                    //Exists cases where the value does not exists
+                    //There's cases where the value does not exists
                     if (results[idGame]["data"]["metacritic"] != null)
                     {
                         game.Score = (string)results[idGame]["data"]["metacritic"]["score"];

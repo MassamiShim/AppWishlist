@@ -18,13 +18,22 @@ namespace Appwishlist
             base.OnCreate(savedInstanceState);
 
             // Create your application here
-            SetContentView(Resource.Layout.wishlist_main);
+            SetContentView(Resource.Layout.app_main);
 
             Button listGame = FindViewById<Button>(Resource.Id.btn_game);
 
             listGame.Click += (sender, e) =>
             {
                 var intent = new Intent(this, typeof(GameActivity));
+                //intent.PutStringArrayListExtra("phone_numbers", phoneNumbers);
+                StartActivity(intent);
+            };
+
+            Button listWish = FindViewById<Button>(Resource.Id.btn_wishlist);
+
+            listWish.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(WishListActivity));
                 //intent.PutStringArrayListExtra("phone_numbers", phoneNumbers);
                 StartActivity(intent);
             };
