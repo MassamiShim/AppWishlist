@@ -34,7 +34,6 @@ namespace Appwishlist
                         FindViewById<TextView>(Resource.Id.nameText).Text = game.Name;
                         FindViewById<TextView>(Resource.Id.idText).Text = game.Steam_appid;
                         FindViewById<TextView>(Resource.Id.descriptionText).Text = game.Detailed_description;
-                        //FindViewById<TextView>(Resource.Id.imageText).Text = game.Header_image;
                         FindViewById<TextView>(Resource.Id.currencyText).Text = game.Currency;
                         FindViewById<TextView>(Resource.Id.priceText).Text = game.Initial;
                         FindViewById<TextView>(Resource.Id.scoreText).Text = game.Score;
@@ -54,14 +53,6 @@ namespace Appwishlist
 
             if (!String.IsNullOrEmpty(idGameEntry.Text))
             {
-                //Weather weather = await Core.GetWeather(zipCodeEntry.Text);
-                //FindViewById<TextView>(Resource.Id.locationText).Text = weather.Title;
-                //FindViewById<TextView>(Resource.Id.tempText).Text = weather.Temperature;
-                //FindViewById<TextView>(Resource.Id.windText).Text = weather.Wind;
-                //FindViewById<TextView>(Resource.Id.visibilityText).Text = weather.Visibility;
-                //FindViewById<TextView>(Resource.Id.humidityText).Text = weather.Humidity;
-                //FindViewById<TextView>(Resource.Id.sunriseText).Text = weather.Sunrise;
-                //FindViewById<TextView>(Resource.Id.sunsetText).Text = weather.Sunset;
                 Game game = await Core.GetGame(idGameEntry.Text);
 
                 if (game != null)
