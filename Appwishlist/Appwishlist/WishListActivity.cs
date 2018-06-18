@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using Android.Service.Autofill;
+using Appwishlist.Classes;
 
 namespace Appwishlist
 {
@@ -74,6 +75,7 @@ namespace Appwishlist
         }
         */
         string[] items;
+        Game[] teste = new Game[2];
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -83,18 +85,31 @@ namespace Appwishlist
 
             items = new string[] {"TESTE 0", "TESTE 1", "TESTE 2" };
 
+            Game teste1 = new Game();
+            teste1.Name = "Teste1";
+            teste1.Steam_appid = "10";
+
+            Game teste2 = new Game();
+            teste2.Name = "Teste2";
+            teste2.Steam_appid = "20";
+
+            teste[0] = teste1;
+            teste[1] = teste2;
+
             //ListView list = FindViewById<ListView>(Resource.Id.list);
-            this.ListAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, items);
+            //this.ListAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, items);
+            this.ListAdapter = new WishlistAdapter(this, teste);
         }
 
         protected override void OnListItemClick(ListView l, View v, int position, long id)
         {
-            var t = items[position];
+            //var t = items[position];
+            var t = teste[position].Steam_appid;
             //Android.Widget.Toast.MakeText(this, t, Android.Widget.ToastLength.Short).Show();
 
             var intent = new Intent(this, typeof(GameActivity));
             //intent.PutStringArrayListExtra("phone_numbers", phoneNumbers);
-            intent.PutExtra("gameId", position*10);
+            intent.PutExtra("gameId", t);
             StartActivity(intent);
         }
     }
