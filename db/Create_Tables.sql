@@ -29,6 +29,7 @@ Create Table Product
 	IdProduct	int identity(1,1),
 	NmProduct	varchar(200),
 	IdTypeProduct	smallint,
+	IdItem		bigint,
 	Constraint PK_Product Primary Key(IdProduct),
 	Constraint FK_Product_TypeProduct_IdTypeProduct Foreign Key(IdTypeProduct) References TypeProduct(IdTypeProduct)
 )

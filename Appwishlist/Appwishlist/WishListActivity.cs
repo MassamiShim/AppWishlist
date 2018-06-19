@@ -77,10 +77,11 @@ namespace Appwishlist
         string[] items;
         Game[] teste = new Game[2];
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
+            Userlist userlist = await Core.GetUserlist("1");
             //SetContentView(Resource.Layout.wishlist_main);
 
             items = new string[] {"TESTE 0", "TESTE 1", "TESTE 2" };

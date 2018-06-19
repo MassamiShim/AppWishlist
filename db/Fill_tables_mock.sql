@@ -10,12 +10,12 @@ Values('Book', 'Amazon'),
 ('Serie', 'Netflix')
 
 Insert Into Product
-Values('Game 1', 2),
-('Game 2', 2),
-('Book 1', 1),
-('Movie 1', 3),
-('Movie 2', 3),
-('Movie 3', 3)
+Values('Game 1', 2, 10),
+('Game 2', 2, 20),
+('Book 1', 1, 30),
+('Movie 1', 3, 40),
+('Movie 2', 3, 50),
+('Movie 3', 3, 60)
 
 Insert Into UserApp
 Values('User 1', 'email@mail.com', 'Password')

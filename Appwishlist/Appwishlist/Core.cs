@@ -89,5 +89,20 @@ namespace Appwishlist
             else
                 return null;
         }
+
+        public static async Task<Userlist> GetUserlist(string idList)
+        {
+            string queryString = "http://10.0.2.2:64146/api/userlists/" + idList;
+            dynamic results = await DataService.getDataFromService(queryString).ConfigureAwait(false);
+
+            if (results != null)
+            {
+                Userlist userlist = new Userlist();
+
+            }
+                
+                return null;
+        }
+
     }
 }
