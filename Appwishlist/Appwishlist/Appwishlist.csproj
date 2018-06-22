@@ -63,6 +63,7 @@
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\Genre.cs" />
     <Compile Include="Classes\Userlist.cs" />
+    <Compile Include="Classes\Wishlist.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Dataservice.cs" />
     <Compile Include="Weather.cs" />

@@ -46,33 +46,38 @@ namespace APIwishlist.Controllers
                     UserList = ul,
                     ListProduct = lp
                 })
-                //.Join(_context.Product,
-                //lp => lp.ListProduct.IdProduct,
-                //p => p.IdProduct,
-                //(lp, p) => new
-                //{
-                //    UserList,
-                //    Product = p
-                //}
-                //)
-                .Where(r => r.UserList.IdList == userList)
+                .Join(_context.Product,
+                lp => lp.ListProduct.IdProduct,
+                p => p.IdProduct,
+                (lp, p) => new
+                {
+
+                    Teste = lp,
+                    Product = p
+                })
+                .Where(r => r.Teste.UserList.IdList == userList)
                 .Select(s => new
                 {
-                    s.UserList.IdList,
-                    s.UserList.NmList,
-                    s.ListProduct.IdProduct,
-                    s.ListProduct.CdStatus
-                })
+                    s.Teste.UserList.IdList,
+                    s.Teste.UserList.NmList,
+                    s.Teste.ListProduct.IdProduct,
+                    s.Teste.ListProduct.CdStatus,
+                    s.Product.NmProduct,
+                    s.Product.IdTypeProduct,
+                    s.Product.IdItem
+                }).ToList();
                 ;
-            //var item = _context.ListProduct.ToList();
+
+            //List<Wishlist> wishlists = new List<Wishlist>();
 
             if (item == null)
             {
                 return NotFound();
             }
             //return item;
-            string teste = JsonConvert.SerializeObject(item);
-            return Json(new { Data = item });//, JsonRequestBehavior.AllowGet);
+            //string teste = JsonConvert.SerializeObject(item);
+            
+            return Json(new { Data = item });
         }
     }
 }

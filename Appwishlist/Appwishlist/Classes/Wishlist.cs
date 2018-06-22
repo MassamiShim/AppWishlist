@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace APIwishlist.Models
+namespace Appwishlist.Classes
 {
-    public class Listproduct
+    public class Wishlist
     {
         public int IdList { get; set; }
+        public string NmList { get; set; }
         public int IdProduct { get; set; }
         public short CdStatus { get; set; }
+        public string NmProduct { get; set; }
+        public short IdTypeProduct { get; set; }
+        public long idItem { get; set; }
     }
 }

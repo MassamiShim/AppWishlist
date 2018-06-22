@@ -76,12 +76,13 @@ namespace Appwishlist
         */
         string[] items;
         Game[] teste = new Game[2];
+        List<Wishlist> wishlists;
 
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            Userlist userlist = await Core.GetUserlist("1");
+            wishlists = await Core.GetUserlist("1");
             //SetContentView(Resource.Layout.wishlist_main);
 
             items = new string[] {"TESTE 0", "TESTE 1", "TESTE 2" };
@@ -99,13 +100,15 @@ namespace Appwishlist
 
             //ListView list = FindViewById<ListView>(Resource.Id.list);
             //this.ListAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, items);
-            this.ListAdapter = new WishlistAdapter(this, teste);
+            //this.ListAdapter = new WishlistAdapter(this, teste);
+            this.ListAdapter = new WishlistAdapter(this, wishlists);
         }
 
         protected override void OnListItemClick(ListView l, View v, int position, long id)
         {
             //var t = items[position];
-            var t = teste[position].Steam_appid;
+            //var t = teste[position].Steam_appid;
+            var t = wishlists[position].idItem;
             //Android.Widget.Toast.MakeText(this, t, Android.Widget.ToastLength.Short).Show();
 
             var intent = new Intent(this, typeof(GameActivity));

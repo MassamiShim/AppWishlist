@@ -17,6 +17,7 @@ namespace Appwishlist
     {
 
         Game[] items;
+        List<Wishlist> items2;
         Context context;
 
         public WishlistAdapter(Context context)
@@ -28,6 +29,12 @@ namespace Appwishlist
         {
             this.context = context;
             this.items = items;
+        }
+
+        public WishlistAdapter(Activity context, List<Wishlist> items) : base()
+        {
+            this.context = context;
+            this.items2 = items;
         }
 
         public override Game this[int position]
@@ -47,7 +54,8 @@ namespace Appwishlist
 
         public override int Count
         {
-            get { return items.Length; }
+            //get { return items.Length; }
+            get { return items2.Count; }
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -68,8 +76,10 @@ namespace Appwishlist
                 //holder.Title = view.FindViewById<TextView>(Resource.Id.text);
 
                 view = inflater.Inflate(Android.Resource.Layout.SimpleListItem1, null);
-                view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items[position].Name;
-                view.FindViewById<TextView>(Android.Resource.Id.Text1).Id = Int32.Parse(items[position].Steam_appid);
+                //view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items[position].Name;
+                //view.FindViewById<TextView>(Android.Resource.Id.Text1).Id = Int32.Parse(items[position].Steam_appid);
+                view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items2[position].NmProduct;
+                view.FindViewById<TextView>(Android.Resource.Id.Text1).Id = Convert.ToInt32(items2[position].idItem);
 
                 view.Tag = holder;
             }

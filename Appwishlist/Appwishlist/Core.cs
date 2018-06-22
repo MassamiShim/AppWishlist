@@ -1,5 +1,7 @@
 ﻿using Appwishlist.Classes;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Appwishlist
@@ -90,18 +92,24 @@ namespace Appwishlist
                 return null;
         }
 
-        public static async Task<Userlist> GetUserlist(string idList)
+        public static async Task<List<Wishlist>> GetUserlist(string idList)
         {
-            string queryString = "http://10.0.2.2:64146/api/userlists/" + idList;
+            string queryString = "http://10.0.2.2:64146/api/userlists/Getlist/" + idList;
+            List<Wishlist> wishlists = new List<Wishlist>();
             dynamic results = await DataService.getDataFromService(queryString).ConfigureAwait(false);
+            //results = await DataService.getDataFromService(queryString).ConfigureAwait(false);
 
+            //TODO
+            //Search an optimal way to convert the data to the list
             if (results != null)
             {
-                Userlist userlist = new Userlist();
-
+                foreach(object teste in results.data)
+                {
+                    wishlists.Add(JsonConvert.DeserializeObject<Wishlist>(teste.ToString()));
+                }
+                //Wishlist teste = JsonConvert.DeserializeObject<Wishlist>(results.data[0].ToString());
             }
-                
-                return null;
+                return wishlists;
         }
 
     }
