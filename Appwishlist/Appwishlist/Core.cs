@@ -112,5 +112,19 @@ namespace Appwishlist
                 return wishlists;
         }
 
+        public static async Task<int> AddProduct(Product product)
+        {
+            string queryString = "http://10.0.2.2:64146/api/Products/";
+
+            string stringData = JsonConvert.SerializeObject(product);
+
+            dynamic results = await DataService.postDataToService(queryString, stringData).ConfigureAwait(false);
+
+            if (results != null)
+                return 1;
+
+            return 0;
+        }
+
     }
 }

@@ -75,11 +75,27 @@ namespace Appwishlist
                 //view = inflater.Inflate(Resource.Layout.item, parent, false);
                 //holder.Title = view.FindViewById<TextView>(Resource.Id.text);
 
-                view = inflater.Inflate(Android.Resource.Layout.SimpleListItem1, null);
+                view = inflater.Inflate(Android.Resource.Layout.TwoLineListItem, null);
                 //view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items[position].Name;
                 //view.FindViewById<TextView>(Android.Resource.Id.Text1).Id = Int32.Parse(items[position].Steam_appid);
                 view.FindViewById<TextView>(Android.Resource.Id.Text1).Text = items2[position].NmProduct;
                 view.FindViewById<TextView>(Android.Resource.Id.Text1).Id = Convert.ToInt32(items2[position].idItem);
+
+                string NmStatus = "";
+                switch (items2[position].CdStatus)
+                {
+                    case 1:
+                        NmStatus = "Finished";
+                        break;
+                    case 2:
+                        NmStatus = "To Do";
+                        break;
+                    case 3:
+                        NmStatus = "Wishlist";
+                        break;
+                }
+
+                view.FindViewById<TextView>(Android.Resource.Id.Text2).Text = NmStatus;
 
                 view.Tag = holder;
             }

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using Android.Graphics;
 using System.Net;
+using System;
 
 namespace Appwishlist
 {
@@ -43,6 +44,28 @@ namespace Appwishlist
             }
 
             return imageBitmap;
+        }
+
+        public static async Task<dynamic> postDataToService(string queryString, string stringData)
+        {
+            HttpClient client = new HttpClient();
+            //Limpando header
+            client.DefaultRequestHeaders.Accept.Clear();
+            //Adicionando um novo header do tipo JSON
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            var contentData = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
+
+            //HttpResponseMessage response = client.GetAsync(queryString).Result;
+            var response = await client.PostAsync(queryString, contentData);
+
+            dynamic data = null;
+            if (response != null)
+            {
+                string json = response.Content.ReadAsStringAsync().Result;
+                data = JsonConvert.DeserializeObject(json);
+            }
+
+            return data;
         }
     }
 }

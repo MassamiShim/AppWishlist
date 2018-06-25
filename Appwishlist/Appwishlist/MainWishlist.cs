@@ -38,6 +38,15 @@ namespace Appwishlist
                 StartActivity(intent);
             };
 
+            Button addProduct = FindViewById<Button>(Resource.Id.btn_product);
+
+            addProduct.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(ProductActivity));
+                //intent.PutStringArrayListExtra("phone_numbers", phoneNumbers);
+                StartActivity(intent);
+            };
+
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
         }

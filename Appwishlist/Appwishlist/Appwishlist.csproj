@@ -60,12 +60,15 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CustomObject.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\Genre.cs" />
+    <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\Userlist.cs" />
     <Compile Include="Classes\Wishlist.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Dataservice.cs" />
+    <Compile Include="ProductActivity.cs" />
     <Compile Include="Weather.cs" />
     <Compile Include="GameActivity.cs" />
     <Compile Include="WishListActivity.cs" />
@@ -134,6 +137,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\wishlist_main.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\product_add.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
