@@ -96,6 +96,21 @@ namespace APIwishlist.Controllers
             return CreatedAtAction("GetProduct", new { id = product.IdProduct }, product);
         }
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateProduct([FromBody] Product product)
+        {
+            Product oldProduct = _context.Product.FirstOrDefault(p => p.IdProduct == product.IdProduct);
+
+            oldProduct.NmProduct = product.NmProduct;
+            oldProduct.IdTypeProduct = product.IdTypeProduct;
+            oldProduct.IdItem = product.IdItem;
+
+            _context.Product.Update(oldProduct);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetProduct", new { id = product.IdProduct }, product);
+        }
+
         // DELETE: api/Products/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct([FromRoute] int id)

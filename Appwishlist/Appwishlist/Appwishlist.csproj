@@ -141,7 +141,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\product_add.axml">
+    <AndroidResource Include="Resources\layout\product_main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

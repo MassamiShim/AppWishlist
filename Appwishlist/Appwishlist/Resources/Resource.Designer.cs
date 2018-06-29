@@ -3203,7 +3203,7 @@ namespace Appwishlist
 			public const int notification_template_part_time = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int product_add = 2130968635;
+			public const int product_main = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
 			public const int select_dialog_item_material = 2130968636;

@@ -16,11 +16,20 @@ namespace Appwishlist
     [Activity(Label = "ProductActivity")]
     public class ProductActivity : Activity
     {
+        //A: Adding a new product
+        //U: Updatint an existing product
+        string CdStatus = "A"; 
+
         protected  override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            SetContentView(Resource.Layout.product_add);
+            SetContentView(Resource.Layout.product_main);
+
+            if (Intent.Extras != null)
+            {
+                CdStatus = Intent.GetSerializableExtra("CdStatus").ToString();
+            }
 
             Button saveButton = FindViewById<Button>(Resource.Id.saveBtn);
 
