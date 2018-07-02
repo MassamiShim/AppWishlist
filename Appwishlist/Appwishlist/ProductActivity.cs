@@ -17,10 +17,10 @@ namespace Appwishlist
     public class ProductActivity : Activity
     {
         //A: Adding a new product
-        //U: Updatint an existing product
-        string CdStatus = "A"; 
+        //U: Updating an existing product
+        string CdStatus = "A";
 
-        protected  override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
@@ -33,10 +33,14 @@ namespace Appwishlist
 
             Button saveButton = FindViewById<Button>(Resource.Id.saveBtn);
 
-            saveButton.Click += Button_Click;
+            saveButton.Click += Save_Click;
+
+            Button searchButton = FindViewById<Button>(Resource.Id.searchBtn);
+
+            searchButton.Click += Search_Click;
 
             Spinner dropdown = FindViewById<Spinner>(Resource.Id.typeSpinner);
-            string[] items = new String[] { "Book", "Game", "Movie" };
+            string[] items = new String[] { "Choose One!", "Book", "Game", "Movie" };
 
             //dropdown.ItemSelected += new EventHandler<AdapterView.ItemSelectedEventArgs>(spinner_ItemSelected);
 
@@ -45,27 +49,64 @@ namespace Appwishlist
             dropdown.Adapter = adapter;
         }
 
-        public async void Button_Click(object sender, EventArgs e)
+        public async void Save_Click(object sender, EventArgs e)
         {
             string name = FindViewById<EditText>(Resource.Id.nameText).Text;
-            long code = Int64.Parse(FindViewById<EditText>(Resource.Id.codeText).Text);
+            long code = 0;
+            if (FindViewById<EditText>(Resource.Id.codeText).Text != "")
+            {
+                code = Int64.Parse(FindViewById<EditText>(Resource.Id.codeText).Text);
+            }
             short type = (Int16)FindViewById<Spinner>(Resource.Id.typeSpinner).SelectedItemId;
 
-            Product product = new Product();
+            if (name != "" && type != 0 && code != 0)
+            {
 
-            product.NmProduct = name;
-            product.IdItem = code;
-            product.IdTypeProduct = type;
+                Product product = new Product();
 
-            int result = await Core.AddProduct(product);
-            string toast;
+                product.NmProduct = name;
+                product.IdItem = code;
+                product.IdTypeProduct = type;
 
-            if (result == 1)
-                toast = string.Format("The product was successfully inserted!");
+                int result = await Core.AddProduct(product);
+                string toast;
+
+                if (result == 1)
+                    toast = string.Format("The product was successfully inserted!");
+                else
+                    toast = string.Format("FAIL");
+
+                Toast.MakeText(this, toast, ToastLength.Long).Show();
+            }
             else
-                toast = string.Format("FAIL");
+                Toast.MakeText(this, "Missing Field!", ToastLength.Long).Show();
+        }
 
-            Toast.MakeText(this, toast, ToastLength.Long).Show();
+        public async void Search_Click(object sender, EventArgs e)
+        {
+            int code = 0;
+            if (FindViewById<EditText>(Resource.Id.idText).Text != "")
+            {
+                code = Int32.Parse(FindViewById<EditText>(Resource.Id.idText).Text);
+            }
+
+            if (code != 0)
+            {
+                Product product = await Core.GetProduct(code);
+
+                if (product.IdItem != 0)
+                { 
+                FindViewById<EditText>(Resource.Id.nameText).Text = product.NmProduct;
+                FindViewById<EditText>(Resource.Id.codeText).Text = product.IdItem.ToString();
+                FindViewById<Spinner>(Resource.Id.typeSpinner).SetSelection(product.IdTypeProduct);
+                }
+                else
+                {
+                    FindViewById<EditText>(Resource.Id.nameText).Text = "Product Not Found!";
+                    FindViewById<EditText>(Resource.Id.codeText).Text = "404";
+                    FindViewById<Spinner>(Resource.Id.typeSpinner).SetSelection(0);
+                }
+            }
         }
     }
 }

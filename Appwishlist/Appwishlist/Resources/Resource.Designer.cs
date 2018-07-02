@@ -2417,8 +2417,8 @@ namespace Appwishlist
 			// aapt resource value: 0x7f08005c
 			public const int action_mode_close_button = 2131230812;
 			
-			// aapt resource value: 0x7f0800d5
-			public const int action_settings = 2131230933;
+			// aapt resource value: 0x7f0800d6
+			public const int action_settings = 2131230934;
 			
 			// aapt resource value: 0x7f0800bc
 			public const int action_text = 2131230908;
@@ -2666,14 +2666,14 @@ namespace Appwishlist
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;
 			
-			// aapt resource value: 0x7f0800d4
-			public const int masked = 2131230932;
+			// aapt resource value: 0x7f0800d5
+			public const int masked = 2131230933;
 			
 			// aapt resource value: 0x7f0800c0
 			public const int media_actions = 2131230912;
 			
-			// aapt resource value: 0x7f0800d2
-			public const int message = 2131230930;
+			// aapt resource value: 0x7f0800d3
+			public const int message = 2131230931;
 			
 			// aapt resource value: 0x7f080031
 			public const int middle = 2131230769;
@@ -2785,6 +2785,9 @@ namespace Appwishlist
 			
 			// aapt resource value: 0x7f080055
 			public const int scrollable = 2131230805;
+			
+			// aapt resource value: 0x7f0800d2
+			public const int searchBtn = 2131230930;
 			
 			// aapt resource value: 0x7f080080
 			public const int search_badge = 2131230848;
@@ -2957,8 +2960,8 @@ namespace Appwishlist
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800d3
-			public const int visible = 2131230931;
+			// aapt resource value: 0x7f0800d4
+			public const int visible = 2131230932;
 			
 			// aapt resource value: 0x7f0800aa
 			public const int weatherBtn = 2131230890;
